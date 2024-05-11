@@ -11,20 +11,19 @@ function createHtml(present,total,subject){
 	else{
 		percentage=present/total*100;
 	}
-	return `<li class="card" id="0">
-                <div class="progress-bar">
-                    <div class="progress" >${percentage.toFixed(0)}</div>
+	return `<div class="progress-bar">
+                 <div class="progress" >${percentage.toFixed(0)}</div>
                 </div>
                 <span class="subject-name">${textbox.value}</span>
                 <button id="present">&#x2713;</button>
                 <button id="absent">&#x2717;</button>
-                <button id="del">-</button>
-            </li>`;
+                <button id="del">-</button>`;
 }
 
 (function getItemsFromLocal(){
 	for(let i=0;i<noOfList;i++){
 		const item = document.createElement('li');
+		item.className='card';
     	const subinfo =JSON.parse(localStorage.getItem(localStorage.key(i)));
     	item.innerHTML=createHtml(subinfo.present,subinfo.total,subinfo.subject);
 		item.id=localStorage.key(i);
@@ -44,6 +43,7 @@ function createHtml(present,total,subject){
 })();
 function additem(){
 	const item = document.createElement('li');
+	item.className='card';
     item.innerHTML =createHtml(0,0,textbox.value) ;
 	item.id=noOfList++;
 	let progressbar=item.querySelector('progress-bar');
