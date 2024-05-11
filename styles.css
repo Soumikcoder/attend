@@ -1,0 +1,138 @@
+/* Reset default margin and padding */
+*{
+
+    box-sizing: border-box;
+}
+body, h1, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set dark background color */
+body {
+    background-color: #333;
+    color: #fff; /* Text color */
+}
+
+/* Center align the text */
+.subject {
+    text-align: center;
+    margin-top: 50px; /* Adjust as needed */
+}
+
+/* Style the heading */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+/* Style the input */
+input[type="text"] {
+    padding: 8px;
+    width: 200px;
+    margin-bottom: 10px; /* Adjust as needed */
+    background-color: #444; /* Input background color */
+    color: #fff; /* Text color */
+    border: none;
+    border-radius: 5px;
+}
+
+/* Style the add button */
+#btn {
+    padding: 8px 15px;
+    background-color: #007bff; /* Adjust color as needed */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+/* Change button color on hover */
+#btn:hover {
+    background-color: #0056b3; /* Adjust color as needed */
+}
+
+/* Style the list */
+.list {
+    margin:auto;
+    margin-top: 20px; /* Adjust as needed */
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+/* Style the card */
+.card {
+    background-color: #222; /* Card background color */
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;/* Use flexbox */
+    align-items: center; /* Align items vertically */
+}
+
+/* Style subject name */
+.subject-name {
+    margin-right: 10px;
+}
+
+/* Style the tick and cross buttons */
+.card button {
+    border: none;
+    border-radius:2em ;
+    cursor: pointer;
+    color: #fff; /* Button color */
+    margin-left: 10px; /* Adjust as needed */
+    height: 25px;
+    width: 25px;
+    font-size: 16px;
+}
+/* Progress bar */
+.progress-bar {
+    background-color: limegreen;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px; /* Adjust spacing */
+    position: relative;
+}
+
+/* Progress */
+.progress {
+ background-color: #000;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  border-radius: 2em;
+  height: 80%;
+  width:80%;
+  font-size:12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#present{
+    background:green;
+}
+#present:hover{
+    background:#0080008f;
+}
+#absent{
+    background:red;
+}
+#absent:hover{
+    background:orangered;
+}
+#del{
+	background:#0064ff;
+}
+#del:hover{
+    background:#1d81ff;
+}
