@@ -45,10 +45,18 @@ function createHtml(present,total,subject){
 	}
 })();
 function additem(){
+	if(textbox.value==="") {
+		textbox.style.background = '#8b0000';
+		return;
+	}
 	const item = document.createElement('li');
 	item.className='card';
     item.innerHTML =createHtml(0,0,textbox.value) ;
-	item.id=noOfList++;
+	item.id=btoa(textbox.value);
+	if(localStorage.getItem(item.id)!=null){
+		textbox.style.background = '#8b0000';
+		return;
+	}
 	let progressbar=item.querySelector('progress-bar');
 	addDeleteListener(item);
 	addPresentListener(item);
@@ -61,6 +69,7 @@ function additem(){
 		subject:textbox.value
 	}
 	textbox.value="";
+	textbox.style.background = '#444';
     localStorage.setItem(item.id,JSON.stringify(data));
 }
 textbox.addEventListener("keypress",(e)=>{
