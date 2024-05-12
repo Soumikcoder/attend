@@ -129,6 +129,7 @@ function addEditListener(item){
 			presentfield.forEach(field=>{
 				field.readOnly=false;
 			})
+			editbtn.style.background="green";
 		}
 		else{
 			presentfield.forEach(field=>{
@@ -152,6 +153,7 @@ function addEditListener(item){
     	else{
     		progressbar.style.background = 'red';
     	}
+    	editbtn.style.background="orange";
     	localStorage.setItem(item.id, JSON.stringify(data));
 		}
 	})
