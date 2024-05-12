@@ -26,7 +26,7 @@ h1 {
 }
 
 /* Style the input */
-input[type="text"] {
+.subject>input[type="text"] {
     margin-top:40px;
     padding: 16px;
     width: 30%;
@@ -78,13 +78,29 @@ input[type="text"] {
     display: flex;
     flex-wrap: wrap;/* Use flexbox */
     align-items: center; /* Align items vertically */
+    justify-content: space-around;
 }
 
 /* Style subject name */
 .subject-name {
     margin-right: 10px;
 }
-
+.Attendance {
+    width: 15%;
+/*    height: 20%;*/
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+}
+.Attendance input{
+    height:30%;
+    background-color: #444; /* Input background color */
+    color: #fff; /* Text color */
+    width:40%;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+}
 /* Style the tick and cross buttons */
 .card button {
     border: none;
@@ -138,4 +154,7 @@ input[type="text"] {
 }
 #del:hover{
     background:#1d81ff;
+}
+#edit{
+    background: orange;
 }
