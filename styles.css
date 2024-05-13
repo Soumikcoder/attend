@@ -35,11 +35,12 @@ h1 {
     color: #fff; /* Text color */
     border: none;
     border-radius: 5px;
+    box-shadow: 0 0 4px aqua;
 }
 
 /* Style the add button */
 #btn {
-    margin-left:10px;
+    margin-left: 2%;
     font-size: 20px;
     padding: 8px 14px;
     background-color: #007bff; /* Adjust color as needed */
@@ -48,6 +49,7 @@ h1 {
     cursor: pointer;
     border-radius: 8px;
     transition: background-color 0.3s;
+
 }
 
 /* Change button color on hover */
@@ -58,7 +60,7 @@ h1 {
 /* Style the list */
 .list {
     margin:auto;
-    margin-top: 20px; /* Adjust as needed */
+    margin-top: 7%; /* Adjust as needed */
     width:50%;
     display: flex;
     flex-direction: column;
@@ -80,6 +82,7 @@ h1 {
     align-items: center; /* Align items vertically */
     justify-content: space-around;
     align-items: space-between;
+    box-shadow: 5px 5px 5px black;
 }
 
 /* Style subject name */
@@ -115,12 +118,14 @@ h1 {
 }
 /* Progress bar */
 .progress-bar {
-    background-color: limegreen;
+    --bgcolor:limegreen;
+    background-color: var(--bgcolor);
     border-radius: 50%;
     height: 40px;
     width: 40px;
     margin-right: 10px; /* Adjust spacing */
     position: relative;
+    box-shadow: 0 0 10px var(--bgcolor);
 }
 
 /* Progress */
@@ -166,4 +171,71 @@ h1 {
     .list{
         width: 90%;
     }
+}
+
+#help{
+    position: absolute;
+    top: 2%;
+    left:85%;
+    height: 35px;
+    width:35px;
+    border: 3px solid red;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px red;
+}
+
+.help{
+    padding:15px;
+    position: absolute;
+    width: 80%;
+/*    border: 2px solid black;*/
+    top:  10%;
+    left: 10%;
+    z-index: 1;
+    background: #222;
+    color: black;
+/*    display: none;*/
+    border-radius: 10px;
+    box-shadow: 0 0 20px black;
+    transform: scale(0.0);
+}
+.help button{
+    position: absolute;
+    top:-8%;
+    left:98%;
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background: whitesmoke;
+    font-size: 12px;
+}
+.help ul{
+    color: white;
+    display: flex;
+    list-style:none;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.help ul li{
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+.help span{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius:2em ;
+    cursor: pointer;
+    color: #fff; /* Button color */
+     /* Adjust as needed */
+    height: 25px;
+    width: 25px;
+    font-size: 16px;
+    margin-right: 10px;
 }

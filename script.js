@@ -32,10 +32,10 @@ function createHtml(present,total,subject){
 		const progressbar = item.querySelector('.progress-bar');
 		percentage=item.querySelector('.progress').textContent;
 		if(percentage >= 75.0){
-    		progressbar.style.background = 'limegreen';
+    		progressbar.style.setProperty('--bgcolor','limegreen');
     	}
     	else{
-    		progressbar.style.background = 'red';
+    		progressbar.style.setProperty('--bgcolor','red');
     	}
 		addDeleteListener(item);
 		addPresentListener(item);
@@ -46,7 +46,7 @@ function createHtml(present,total,subject){
 })();
 function additem(){
 	if(textbox.value==="") {
-		textbox.style.background = '#8b0000';
+		textbox.setAttribute('style', 'box-shadow: 0 0 4px red;') ;
 		return;
 	}
 	const item = document.createElement('li');
@@ -54,7 +54,8 @@ function additem(){
     item.innerHTML =createHtml(0,0,textbox.value) ;
 	item.id=btoa(textbox.value);
 	if(localStorage.getItem(item.id)!=null){
-		textbox.style.background = '#8b0000';
+		textbox.setAttribute('style', 'box-shadow: 0 0 4px red;') ;
+			textbox.value="";
 		return;
 	}
 	let progressbar=item.querySelector('progress-bar');
@@ -70,6 +71,7 @@ function additem(){
 	}
 	textbox.value="";
 	textbox.style.background = '#444';
+	textbox.setAttribute('style', 'box-shadow: 0 0 4px limegreen;') ;
     localStorage.setItem(item.id,JSON.stringify(data));
 }
 textbox.addEventListener("keypress",(e)=>{
@@ -95,7 +97,7 @@ function addPresentListener(item) {
     	totalfield.value=data.total;
     	progress.textContent=percentage.toFixed(0);
     	if(percentage >= 75.0){
-    		progressbar.style.background = 'limegreen';
+    		progressbar.style.setProperty('--bgcolor','limegreen');
     	}
     	localStorage.setItem(item.id, JSON.stringify(data));
     });
@@ -113,7 +115,7 @@ function addAbsentListener(item) {
     	totalfield.value=data.total;
     	progress.textContent=percentage.toFixed(0);
     	if(percentage < 75.0){
-    		progressbar.style.background = 'red';
+    		progressbar.style.setProperty('--bgcolor','red');
     	}
     	localStorage.setItem(item.id, JSON.stringify(data));
     });
@@ -167,3 +169,11 @@ function addEditListener(item){
 		}
 	})
 }
+const help=document.querySelector(".help");
+help.querySelector('button').addEventListener('click',()=>{
+	help.setAttribute('style','transform: scale(0.0);transition: 0.2s;')
+})
+const helpbtn=document.getElementById('help');
+helpbtn.addEventListener('click',()=>{
+	help.setAttribute('style','transform: scale(1.0) ;transition: 0.2s;');
+})
