@@ -159,10 +159,10 @@ function addEditListener(item){
     	}
     	progress.textContent=percentage.toFixed(0);
     	if(percentage >= 75.0){
-    		progressbar.style.background = 'limegreen';
+    		progressbar.style.setProperty('--bgcolor','limegreen');
     	}
     	else{
-    		progressbar.style.background = 'red';
+    		progressbar.style.setProperty('--bgcolor','red');
     	}
     	editbtn.style.background="orange";
     	localStorage.setItem(item.id, JSON.stringify(data));
