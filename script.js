@@ -28,8 +28,7 @@ function createHtml(present,total,subject){
 	for(let i=0;i<noOfList;i++){
 		const item = document.createElement('li');
 		item.className='card';
-		const data=localStorage.getItem(localStorage.key(i));
-    	const subinfo =JSON.parse(data);
+    	const subinfo =JSON.parse(localStorage.getItem(localStorage.key(i)));
     	item.innerHTML=createHtml(subinfo.present,subinfo.total,subinfo.subject);
 		item.id=localStorage.key(i);
 		const progressbar = item.querySelector('.progress-bar');
@@ -41,7 +40,7 @@ function createHtml(present,total,subject){
     	else{
     		progressbar.style.setProperty('--bgcolor','red');
     	}
-    	quote.textContent=getquote(data,percentage);
+    	quote.textContent=getquote(subinfo,percentage);
 		addDeleteListener(item);
 		addPresentListener(item);
 		addEditListener(item);
