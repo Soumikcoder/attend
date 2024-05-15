@@ -206,7 +206,7 @@ function getquote(data,datapercentage){
     		if(noOfAttend <= 1){
     			return `You have to attend next class.`;
     		}
-    		else if(noOfAttend > 0){
+    		else{
     			return `You have to attend next ${noOfAttend} classes.`;
     		}
     	}
