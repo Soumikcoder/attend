@@ -237,7 +237,7 @@ function getquote(data,datapercentage){
 
 
 slider.addEventListener('input',function(){
-	req_percentage=this.value
+	req_percentage=parseInt(this.value)
 	slider_text.innerHTML=req_percentage
 	for(let i=0;i<list.childElementCount;i++){
 		const card=list.children[i]
