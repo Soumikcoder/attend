@@ -1,8 +1,15 @@
 const textbox = document.querySelector('input');
 const btn = document.getElementById('btn');
 let list = document.querySelector('.list');
+const slider=document.getElementById('slider')
+const slider_text=document.getElementById('slider_text')
 let noOfList=localStorage.length;
-
+let req_percentage=parseInt(JSON.parse(localStorage.getItem("attendancecriteria")))
+if (isNaN(req_percentage)){
+	req_percentage=75
+	localStorage.setItem("attendancecriteria", JSON.stringify(req_percentage));
+}
+slider_text.innerHTML=req_percentage
 // add reset button next
 function createHtml(present,total,subject){
 	let percentage=0;
@@ -23,24 +30,29 @@ function createHtml(present,total,subject){
                 <button id="del">-</button>
                 <div class="quote">You're right on track.</div>`;
 }
-
-(function getItemsFromLocal(){
-	for(let i=0;i<noOfList;i++){
-		const item = document.createElement('li');
-		item.className='card';
-    	const subinfo =JSON.parse(localStorage.getItem(localStorage.key(i)));
-    	item.innerHTML=createHtml(subinfo.present,subinfo.total,subinfo.subject);
-		item.id=localStorage.key(i);
-		const progressbar = item.querySelector('.progress-bar');
-		const quote = item.querySelector('.quote');
+function update_progress(item,subinfo){
+	const progressbar = item.querySelector('.progress-bar');
 		percentage=item.querySelector('.progress').textContent;
-		if(percentage >= 75.0){
+		if(percentage >= req_percentage){
     		progressbar.style.setProperty('--bgcolor','limegreen');
     	}
     	else{
     		progressbar.style.setProperty('--bgcolor','red');
     	}
+		const quote = item.querySelector('.quote');
     	quote.textContent=getquote(subinfo,percentage);
+}
+(function getItemsFromLocal(){
+	for(let i=0;i<noOfList;i++){
+		if(localStorage.key(i)=="attendancecriteria") continue;
+    	console.log(localStorage.key(i))
+		const item = document.createElement('li');
+		item.className='card';
+
+    	const subinfo =JSON.parse(localStorage.getItem(localStorage.key(i)));
+    	item.innerHTML=createHtml(subinfo.present,subinfo.total,subinfo.subject);
+		item.id=localStorage.key(i);
+		update_progress(item,subinfo)
 		addDeleteListener(item);
 		addPresentListener(item);
 		addEditListener(item);
@@ -101,7 +113,7 @@ function addPresentListener(item) {
     	presentfield.value=data.present;
     	totalfield.value=data.total;
     	progress.textContent=percentage.toFixed(0);
-    	if(percentage >= 75.0){
+    	if(percentage >= req_percentage){
     		progressbar.style.setProperty('--bgcolor','limegreen');
     	}
     	quote.textContent=getquote(data,percentage);
@@ -121,7 +133,7 @@ function addAbsentListener(item) {
     	percentage=data.present/data.total*100;
     	totalfield.value=data.total;
     	progress.textContent=percentage.toFixed(0);
-    	if(percentage < 75.0){
+    	if(percentage < req_percentage){
     		progressbar.style.setProperty('--bgcolor','red');
     	}
     	quote.textContent=getquote(data,percentage);
@@ -165,7 +177,7 @@ function addEditListener(item){
     		data.present=0;
     	}
     	progress.textContent=percentage.toFixed(0);
-    	if(percentage >= 75.0){
+    	if(percentage >= req_percentage){
     		progressbar.style.setProperty('--bgcolor','limegreen');
     	}
     	else{
@@ -177,17 +189,28 @@ function addEditListener(item){
 		}
 	})
 }
-const help=document.querySelector(".help");
-help.querySelector('button').addEventListener('click',()=>{
-	help.setAttribute('style','transform: scale(0.0);transition: 0.2s;')
-})
-const helpbtn=document.getElementById('help');
-helpbtn.addEventListener('click',()=>{
-	help.setAttribute('style','transform: scale(1.0) ;transition: 0.2s;');
-})
+function popup(element_query){
+	const element=document.querySelector(`.${element_query}`);
+	element.querySelector('button').addEventListener('click',()=>{
+	element.setAttribute('style','transform:translate(-50%,-50%) scale(0.0);transition: 0.2s;')
+	})
+	const btn=document.getElementById(element_query);
+	btn.addEventListener('click',()=>{
+		element.setAttribute('style','transform:translate(-50%,-50%) scale(1.0) ;transition: 0.2s;');
+	})
+}
+popup('help')
+popup('perslider')
+
+
 
 function getquote(data,datapercentage){
-	const percentage=75.0
+	const percentage=req_percentage
+	if(req_percentage== 100 ) {
+		if(datapercentage == percentage) return "You have to attend all class"
+		else
+			return "You never gonna get on track"
+	}
 	if(datapercentage >= percentage){
     		const noOfLeaves=Math.floor((100*data.present-percentage*data.total)/percentage);
     		if(noOfLeaves == 1){
@@ -210,3 +233,19 @@ function getquote(data,datapercentage){
     		}
     	}
 }
+
+
+
+slider.addEventListener('input',function(){
+	req_percentage=this.value
+	slider_text.innerHTML=req_percentage
+	for(let i=0;i<list.childElementCount;i++){
+		const card=list.children[i]
+		subinfo={
+			present:parseInt( card.querySelector('.present').value),
+			total:parseInt( card.querySelector('.total').value)
+		}
+		update_progress(list.children[i],subinfo)
+	}
+	localStorage.setItem("attendancecriteria", JSON.stringify(req_percentage));
+})
