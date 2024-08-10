@@ -1,0 +1,12 @@
+{
+	"name": "Attendance Manager",
+	"icons":
+	[{"src": "/vite.svg","type": "image/svg+xml",
+	"sizes": "1024x1024",
+	"purpose": "any maskable"}],
+	"start_url": ".",
+	"short_name": "Attendance",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
+}

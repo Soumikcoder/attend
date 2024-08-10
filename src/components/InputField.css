@@ -1,0 +1,33 @@
+.InputField > input[type="text"] {
+    margin-top:40px;
+    padding: 16px;
+    width: 30%;
+    margin-bottom: 10px; /* Adjust as needed */
+    background-color: #444; /* Input background color */
+    color: #fff; /* Text color */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 4px aqua;
+}
+@media(max-width: 600px){
+    .InputField>input[type="text"] {
+        width: 60%;
+    }
+}
+#btn {
+    margin-left: 2%;
+    font-size: 20px;
+    padding: 8px 14px;
+    background-color: #007bff; /* Adjust color as needed */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+
+}
+
+/* Change button color on hover */
+#btn:hover {
+    background-color: #0056b3; /* Adjust color as needed */
+}
