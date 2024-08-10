@@ -1,42 +1,176 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+*{
+    box-sizing: border-box;
+}
+body, h1, ul {
+    margin: 0;
+    padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+
+h1{
+     /* Text color */
+     display: flex;
+     justify-content: center;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Set dark background color */
+body {
+    background-color: #333;
+    color: #fff; /* Text color */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Center align the text */
+.subject {
+    text-align: center;
+    margin-top: 50px; /* Adjust as needed */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Style the heading */
+h1 {
+    font-size: 3em;
+    margin: 20px;
+    margin-top: 50px; /* Adjust as needed */
 }
 
-.card {
-  padding: 2em;
+/* Style the input */
+
+
+/* Style the add button */
+
+/* Style the list */
+.list {
+    margin:auto;
+    margin-top: 7%; /* Adjust as needed */
+    width:40%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
 }
 
-.read-the-docs {
-  color: #888;
+@media(max-width: 600px){
+    .list{
+        width: 90%;
+    }
+}
+
+#help{
+    position: absolute;
+    top: 2%;
+    left:85%;
+    height: 35px;
+    width:35px;
+    border: 3px solid red;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px red;
+}
+#perslider{
+    position: absolute;
+    color: green;
+    top: 2%;
+    left:5%;
+    height: 35px;
+    width:35px;
+    border: 3px solid green;
+    background: white;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 1px 1px 10px green;
+}
+
+.popup{
+     z-index: 1;
+    padding:15px;
+    top:  25%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.0);
+     position: absolute;
+     border-radius: 10px;
+    box-shadow: 0 0 20px black;
+}
+.help{
+    width: 40%;
+    background: #222;
+    color: black;
+}
+
+.perslider{
+    top:10%;
+    width:60%;
+    background: #222;
+    color: black;
+    text-align: center;
+}
+.help button,.perslider button{
+    position: absolute;
+    top:-8%;
+    left:98%;
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background: whitesmoke;
+    font-size: 12px;
+}
+.perslider .slectedval{
+    color: white;
+    padding: 10px;
+    width: 42px;
+    height: 42px;
+    margin: 8px;
+    display: inline;
+    border: 2px solid red;
+    padding-left:7px ;
+    font-size: 14px;
+    border: 3px solid skyblue;
+}
+.perslider input{
+    margin: auto;
+    margin-left: 20%;
+    width: 60%;
+    padding: 10px;
+}
+.help ul{
+    color: white;
+    display: flex;
+    list-style:none;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.help ul li{
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+.help span{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius:2em ;
+    cursor: pointer;
+    color: #fff; /* Button color
+     /* Adjust as needed */
+    height: 25px;
+    width: 25px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+@media(max-width: 600px){
+    .help ,.perslider{
+        width: 80%;
+    }
+
+}
+.quote{
+    margin-top: 3%;
+    height:10%;
+    width: 100%;
+    color:#AAA;
+    font-size: 12px;
 }
