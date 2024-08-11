@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './Help.css'
 function Help() {
    const [isOpen,setIsOpen]=useState(false)
    const togglePopup = () => {
@@ -20,13 +20,13 @@ function Help() {
                  <span style={{background: "green"}}>&#x2713;</span> Mark Present
              </li>
              <li>
-                 <span style={{background: "red"}}>&#x2717;</span> Mark Absent
+                 <span style={{fontSize:"1.2em" }}>❌️</span> Mark Absent
              </li>
              <li>
-                 <span style={{background:" orange"}}>&#9998;</span> Modify Attendance
+                 <span style={{fontSize:"1.2em" }}>✍️</span> Modify Attendance
              </li>
              <li>
-                 <span style={{background:" green"}}>&#9998;</span> Edit Mode
+                 <span style={{fontSize:"1.2em" }}>📋️</span>Save Attendance
              </li>
              <li>
                  <span style={{background:"#0064ff"}}>-</span>Delete Subject

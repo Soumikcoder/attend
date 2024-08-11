@@ -13,10 +13,11 @@ export default defineConfig({
         name: 'Attendance Manager',
         short_name: 'Attendance',
         description: 'Maintain your attendance',
-        theme_color: '#ffffff',
+        theme_color: '#222',
+        background_color:'#fff',
         icons: [
           {
-            src: '/vite.svg',
+            src: '/Attendance.svg',
             sizes: '192x192',
             type: 'image/svg+xml'
           }
