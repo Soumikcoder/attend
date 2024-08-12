@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './CardList.css'
-import { CardContext, useCard } from '../context';
+import { useCard } from '../context';
 function CardList({cardcomp}) {
 	const {req_percentage,editCard,deleteCard}=useCard()
 	const [percen,setPercen]=useState(75)
@@ -44,9 +44,10 @@ function CardList({cardcomp}) {
 	},[req_percentage,percen])
 	useEffect(()=>{
 		const cal_percentage=(parseInt(total) != 0?parseInt(present)/parseInt(total)*100:100)
-		setPercen(cal_percentage.toFixed(0))
+		setPercen(parseInt(cal_percentage.toFixed(0)))
 		const new_quote=getQuote()
 		setQuote(new_quote)
+		edit()
 	},[present,total,getQuote])
 
 
@@ -71,13 +72,13 @@ function CardList({cardcomp}) {
 	    } onChange={(e)=>setTotal((e.target.value))} readOnly={!editable} />
 	    </span>
         <button id="present" onClick={()=>{
-        	setPresent((prev)=>prev+1)
-        	setTotal((prev)=>prev+1)
+        	setPresent((prev)=>parseInt(prev)+1)
+        	setTotal((prev)=>parseInt(prev)+1)
         	edit()
         }
     	}>&#x2713;</button>
         <button id="absent" onClick={()=>{
-        setTotal((prev)=>prev+1)
+        setTotal((prev)=>parseInt(prev)+1)
         edit()
         }}
         >❌️</button>
